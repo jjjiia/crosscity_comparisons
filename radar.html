@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+<link rel="stylesheet" href="radar-chart-d3-master/src/radar-chart.css">
+
+<style>
+body {
+  padding: 20px;
+}
+</style>
+
+<style>
+.radar-chart .area {
+  fill-opacity: 0.1;
+  stroke-opacity:.3;
+}
+.radar-chart.focus .area {
+  fill-opacity: 0.1;
+}
+.radar-chart.focus .area.focused {
+  fill-opacity: 0.9;
+}
+.high-income .circle {fill:#549EC4;}
+.area.high-income{fill: none;stroke: #549EC4;}
+.medium-income .circle {fill:#E13F29;}
+.area.medium-income {fill: none;  stroke:#E13F29;}
+.low-income .circle {fill:#FFD700;}
+.area.low-income{fill:none; stroke:#FFD700;}
+</style>
+
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="radar-chart-d3-master/src/radar-chart.js"></script>
+
+
+<body>
+
+
+</body>
+
+<script src="radar.js"></script>
