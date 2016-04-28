@@ -76,19 +76,37 @@ d3.csv("atlasOfLight_crossCityComparison - citynumbers.csv", function(error, cit
       .data(cities)
     .enter().append("path")
       .attr("d", path);
-
+ var cityColors = {"chicago":"#C95892","denver":"#6FC440", "washington":"#BC72D1", "sanJose":"#CAA432", "portland":"#7484C5", "pittsburg":"#C9622F", "orlando":"#43A2B3", "milwaukee":"#D34E5B","lasVegas":"#48AD73", "LA":"#6A852E"}
+ var cityNumbers = {"1":"chicago","2":"denver","3":"washington","4":"sanJose",
+ "5":"portland","6":"pittsburg","7":"orlando","8":"milwaukee","9":"lasVegas","10":"LA"}
   // Add blue foreground lines for focus.
   foreground = svg.append("g")
       .attr("class", "foreground")
     .selectAll("path")
       .data(cities)
-    .enter().append("path")
+     .enter().append("path")
       .attr("d", path)
       .attr("stroke",function(d){
-        console.log(d)
+        return cityColors[cityNumbers[d.city]]
         return "red"
       });
-
+var tempArray = []
+      for(var i = 1; i <11; i++){
+        tempArray.push(i)
+      }
+      var labelYscale = d3.scale.linear().domain([1,10]).range([460,1])
+    svg.append("g")
+      .attr("class","cityName")
+      .selectAll("text")
+      .data(tempArray)
+     .enter()
+      .append("text")
+      .text(function(d){return cityNumbers[d]})
+      .attr("x",function(d,i){return 20})
+      .attr("y",function(d,i){return labelYscale(i)-50})
+      .attr("stroke",function(d){
+        return cityColors[cityNumbers[d]]
+      })
   // Add a group element for each dimension.
   var g = svg.selectAll(".dimension")
       .data(dimensions)
